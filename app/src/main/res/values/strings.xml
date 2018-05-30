@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BehaviorDemo</string>
+    <string name="scroll_up_show_behavior">com.example.nonu.behaviordemo.behavior.ScrollUpShowBehavior</string>
+    <string name="scroll_up_hide_behavior">com.example.nonu.behaviordemo.behavior.ScrollUpHideBehavior</string>
+</resources>

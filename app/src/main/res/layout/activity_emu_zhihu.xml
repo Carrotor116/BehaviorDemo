@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false">
+
+    <include layout="@layout/include_tool_bar" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <TextView
+        android:id="@+id/foot_tv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:background="#1d3235"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:text="foot"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:behavior_target="@id/recycler_rv"
+        app:layout_behavior="@string/scroll_up_hide_behavior" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginBottom="70dp"
+        android:layout_marginEnd="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_audiotrack_24dp"
+        app:backgroundTint="@color/blue_light"
+        app:behavior_target="@id/recycler_rv"
+        app:layout_behavior="@string/scroll_up_hide_behavior" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginBottom="140dp"
+        android:layout_marginEnd="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_audiotrack_24dp"
+        app:backgroundTint="@color/blue_light"
+        app:behavior_scroll_threshold="100dp"
+        app:behavior_target="@id/recycler_rv"
+        app:layout_behavior="@string/scroll_up_hide_behavior" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginBottom="210dp"
+        android:layout_marginEnd="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_audiotrack_24dp"
+        app:backgroundTint="@color/blue_light"
+        app:behavior_scroll_threshold="200dp"
+        app:behavior_target="@id/recycler_rv"
+        app:layout_behavior="@string/scroll_up_hide_behavior" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginBottom="280dp"
+        android:layout_marginEnd="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_audiotrack_24dp"
+        app:backgroundTint="@color/blue_light"
+        app:behavior_scroll_threshold="400dp"
+        app:behavior_target="@id/recycler_rv"
+        app:layout_behavior="@string/scroll_up_hide_behavior" />
+
+</android.support.design.widget.CoordinatorLayout>

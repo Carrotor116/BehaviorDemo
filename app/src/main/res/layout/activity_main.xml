@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_tool_bar" />
+
+    <Button
+        android:id="@+id/bottom_sheet_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BottomSheetActivity"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/fat_up_show_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FatUpShowActivity"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/emu_zhihu_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EmuZhihuActivity"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+
+</LinearLayout>
