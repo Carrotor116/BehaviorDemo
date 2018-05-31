@@ -24,8 +24,10 @@ class NextActivity : AppCompatActivity() {
 
         recycler_rv.layoutManager = LinearLayoutManager(this)
         val adapter = BaseRecyclerAdapter(this, R.layout.item_rv)
-        adapter.addBindViewHelper { holder, position -> holder.itemView.findViewById<TextView>(R.id.item_tv).text = "数据" + position }
-        adapter.addItemClick(R.id.item_tv, fun(_: View, _: Int) {
+        adapter.addBindViewHelper {
+            it.holder.itemView.findViewById<TextView>(R.id.item_tv).text = "数据" + it.position
+        }
+        adapter.addItemClick(R.id.item_tv, {
             recycler_rv.scrollToPosition(0)
         })
         for (i in 0..40) adapter.addData(HashMap())

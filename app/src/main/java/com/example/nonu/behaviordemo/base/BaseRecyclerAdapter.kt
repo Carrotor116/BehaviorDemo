@@ -22,9 +22,9 @@ import kotlin.collections.HashMap
 class BaseRecyclerAdapter(private val mContext: Context, @LayoutRes private val mLayoutRes: Int) : RecyclerView.Adapter<BaseRecyclerAdapter.Companion.BaseViewHolder>() {
 
     private var mDataList: MutableList<Map<String, Any>> = ArrayList()
-    private val mOnItemClickMap: HashMap<Int, (v: View, position: Int) -> Unit> = HashMap()
-    private val mOnItemLongClickMap: HashMap<Int, (v: View, position: Int) -> Boolean> = HashMap()
-    private val mOnBindItemViewHelpers = LinkedList<(holder: BaseViewHolder, position: Int) -> Unit>()
+    private val mOnItemClickMap: HashMap<Int, (ClickEntry) -> Unit> = HashMap()
+    private val mOnItemLongClickMap: HashMap<Int, (ClickEntry) -> Boolean> = HashMap()
+    private val mOnBindItemViewHelpers = LinkedList<(BindEntry) -> Unit>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         val view = LayoutInflater.from(mContext).inflate(mLayoutRes, parent, false)
@@ -39,25 +39,25 @@ class BaseRecyclerAdapter(private val mContext: Context, @LayoutRes private val 
         mOnItemClickMap.forEach({
             val view = holder.itemView.findViewById<View?>(it.key)
             val onClick = it.value
-            view?.setOnClickListener { onClick(it, position) }
+            view?.setOnClickListener { onClick(ClickEntry(it, position)) }
         })
         mOnItemLongClickMap.forEach {
             val view = holder.itemView.findViewById<View?>(it.key)
             val onLongClick = it.value
-            view?.setOnLongClickListener { onLongClick(it, position) }
+            view?.setOnLongClickListener { onLongClick(ClickEntry(it, position)) }
         }
 
         mOnBindItemViewHelpers.forEach {
-            it.invoke(holder, position)
+            it.invoke(BindEntry(holder, position))
         }
     }
 
 
-    fun addItemClick(resId: Int, onClick: (v: View, position: Int) -> Unit) {
+    fun addItemClick(resId: Int, onClick: (ClickEntry) -> Unit) {
         mOnItemClickMap[resId] = onClick
     }
 
-    fun addItemLongClick(resId: Int, onClick: (v: View, position: Int) -> Boolean) {
+    fun addItemLongClick(resId: Int, onClick: (ClickEntry) -> Boolean) {
         mOnItemLongClickMap[resId] = onClick
     }
 
@@ -70,7 +70,7 @@ class BaseRecyclerAdapter(private val mContext: Context, @LayoutRes private val 
     }
 
 
-    fun addBindViewHelper(onBindView: (holder: BaseViewHolder, position: Int) -> Unit) {
+    fun addBindViewHelper(onBindView: (BindEntry) -> Unit) {
         mOnBindItemViewHelpers.add(onBindView)
     }
 
@@ -96,5 +96,7 @@ class BaseRecyclerAdapter(private val mContext: Context, @LayoutRes private val 
 
     companion object {
         class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+        class ClickEntry(val view: View, val position: Int)
+        class BindEntry(val holder: BaseViewHolder, val position: Int)
     }
 }

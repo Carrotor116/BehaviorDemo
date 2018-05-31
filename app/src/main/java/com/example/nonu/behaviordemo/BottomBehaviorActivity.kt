@@ -50,12 +50,12 @@ class BottomBehaviorActivity : BaseActivity() {
     override fun initData() {
         val recyclerRv = RecyclerView(this)
         val adapter = BaseRecyclerAdapter(this, R.layout.item_rv)
-        adapter.addBindViewHelper { holder, position ->
-            val str = "数据 $position"
-            holder.itemView.findViewById<TextView>(R.id.item_tv).text = str
+        adapter.addBindViewHelper {
+            val str = "数据 ${it.position}"
+            it.holder.itemView.findViewById<TextView>(R.id.item_tv).text = str
         }
-        adapter.addItemClick(R.id.item_tv, fun(v: View, p: Int) {
-            ToastUtil.showShortToast(this, "" + p)
+        adapter.addItemClick(R.id.item_tv, {
+            ToastUtil.showShortToast(this, it.position.toString())
         })
         for (i in 0..40) adapter.addData(HashMap())
         recyclerRv.adapter = adapter

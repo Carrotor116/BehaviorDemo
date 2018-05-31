@@ -1,2 +1,2 @@
 # BehaviorDemo
-android CoordinatorLayout behavior test
+android CoordinatorLayout behavior practice

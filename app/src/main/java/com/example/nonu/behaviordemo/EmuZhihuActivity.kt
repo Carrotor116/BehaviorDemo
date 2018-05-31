@@ -33,12 +33,12 @@ class EmuZhihuActivity : BaseActivity() {
 
     override fun initData() {
         mAdapter = BaseRecyclerAdapter(this, R.layout.item_rv)
-        mAdapter.addBindViewHelper { holder, position ->
-            val str = position.toString()
-            holder.itemView.findViewById<TextView>(R.id.item_tv).text = str
+        mAdapter.addBindViewHelper {
+            val str = it.position.toString()
+            it.holder.itemView.findViewById<TextView>(R.id.item_tv).text = str
         }
-        mAdapter.addItemClick(R.id.item_tv, fun(v: View, p: Int) {
-            ToastUtil.showShortToast(this, p.toString())
+        mAdapter.addItemClick(R.id.item_tv, {
+            ToastUtil.showShortToast(this, it.position.toString())
         })
         for (i in 0..40) mAdapter.addData(HashMap())
     }

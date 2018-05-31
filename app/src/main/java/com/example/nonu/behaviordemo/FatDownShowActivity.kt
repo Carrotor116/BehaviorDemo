@@ -39,12 +39,12 @@ class FatDownShowActivity : BaseActivity() {
 
     override fun initData() {
         mAdapter = BaseRecyclerAdapter(this, R.layout.item_rv)
-        mAdapter.addBindViewHelper { holder, position ->
-            val str = "数据 $position"
-            holder.itemView.findViewById<TextView>(R.id.item_tv).text = str
+        mAdapter.addBindViewHelper {
+            val str = "数据 ${it.position}"
+            it.holder.itemView.findViewById<TextView>(R.id.item_tv).text = str
         }
-        mAdapter.addItemClick(R.id.item_tv, fun(v: View, p: Int) {
-            ToastUtil.showShortToast(this, "" + p)
+        mAdapter.addItemClick(R.id.item_tv, {
+            ToastUtil.showLongToast(this, it.position.toString())
         })
         for (i in 0..30) mAdapter.addData(HashMap())
 
